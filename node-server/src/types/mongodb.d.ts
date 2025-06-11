@@ -1,5 +1,5 @@
-// src/types/global.d.ts
-import { Types } from "mongoose"; // ✅ makes this file a module
+
+import { Types } from "mongoose"; 
 
 interface IUser {
   _id: Types.ObjectId;
