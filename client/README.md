@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔥 Auth Template - Next.js Edition 🔒
 
-## Getting Started
+A modern authentication template built with Next.js, designed to kickstart your projects with secure and stylish user authentication. ✨
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🔐 **Secure Authentication**: Implements robust user authentication with sign-up, sign-in, and session management.
+- 🎨 **Modern UI**: Utilizes a sleek and modern design with components from Shadcn UI.
+- 🛡️ **Middleware Protection**: Protects specific routes (e.g., `/profile`) using Next.js middleware.
+- 📧 **Email/Password Auth**: Supports traditional email and password authentication.
+- 🌐 **Axios Integration**: Uses Axios for making HTTP requests to the backend API.
+- 🎨 **Customizable Themes**: Easily switch between light and dark themes using `next-themes`.
+- 🔔 **Real-time Notifications**: Provides user feedback with `sonner` for toast notifications.
+
+## 🛠️ Technologies Used
+
+| Technology   | Description                                                        | Link                                                              |
+| :----------- | :----------------------------------------------------------------- | :---------------------------------------------------------------- |
+| Next.js      | React framework for building modern web applications               | [https://nextjs.org/](https://nextjs.org/)                           |
+| TypeScript   | Superset of JavaScript that adds static typing                    | [https://www.typescriptlang.org/](https://www.typescriptlang.org/) |
+| Tailwind CSS | Utility-first CSS framework for rapid UI development                | [https://tailwindcss.com/](https://tailwindcss.com/)             |
+| Shadcn UI    | Re-usable components built using Radix UI and Tailwind CSS        | [https://ui.shadcn.com/](https://ui.shadcn.com/)                  |
+| Axios        | Promise based HTTP client for the browser and node.js             | [https://axios-http.com/](https://axios-http.com/)                |
+| Sonner       | Opinionated toast notifications                                      | [https://sonner.emilkowalski.com/](https://sonner.emilkowalski.com/)                  |
+
+## 🚀 Installation
+
+Follow these steps to get the project running locally:
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/onosejoor/auth-template.git
+    cd client
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
+
+3.  **Run the development server:**
+
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 💻 Usage
+
+### Sign Up Form
+
+The sign-up form (`src/app/signup/_components/signup-form.tsx`) allows new users to create an account.
+
+```tsx
+import SignUpForm from "./_components/signup-form"
+
+export default function SignUpPage() {
+  return <SignUpForm />
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Sign In Form
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The sign-in form (`src/app/signin/_components/signin-form.tsx`) allows existing users to log in.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```tsx
+import SignInForm from "./_components/signin-form"
 
-## Learn More
+export default function SignInPage() {
+  return <SignInForm />
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Profile Page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The profile page (`src/app/profile/page.tsx`) displays user information and requires authentication.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```tsx
+import { use } from "react"
+import ProfilePage from "./_components/profile-page"
+import { getUser } from "@/actions/getUser"
 
-## Deploy on Vercel
+export default function Profile() {
+  const user = use(getUser())
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  if (!user.success) {
+    return new Error("Error fetching user")
+  }
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+  
+
+  return <ProfilePage user={user.user!} />
+}
+```
+
+## 📝 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## 👨‍💻 Author Info
+
+- Author: [Your Name]
+  - GitHub: [Your GitHub Link]
+  - Twitter: [Your Twitter Link]
+
+##
+
+[![Readme was generated by Dokugen](https://img.shields.io/badge/Readme%20was%20generated%20by-Dokugen-brightgreen)](https://www.npmjs.com/package/dokugen)
