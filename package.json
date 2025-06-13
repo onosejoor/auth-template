@@ -1,6 +1,6 @@
 {
   "name": "auth-temp",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Generate auth templates for your projects",
   "main": "cmd/index.js",
   "bin": {
