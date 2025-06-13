@@ -11,10 +11,16 @@
   "bin": {
     "fauth-temp": "dist/cmd/index.js"
   },
+  "files": [
+    "dist/**/*",
+    "templates/**/*",
+    "cmd/**/*"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "ts-node cmd/index.ts create",
-    "fauth-temp": "ts-node cmd/index.ts create"
+    "fauth-temp": "ts-node cmd/index.ts create",
+    "publish": "npm run build && npm publish"
   },
   "dependencies": {
     "@clack/prompts": "^0.11.0",
