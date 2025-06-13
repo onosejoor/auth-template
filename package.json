@@ -1,15 +1,15 @@
 {
-  "name": "fauth-temp",
-  "version": "1.0.1",
+  "name": "fauth-template",
+  "version": "1.0.3",
   "description": "Generate auth templates for your projects",
   "author": {
     "name": "Onos Ejoor",
     "email": "onosejoor14@gmail.com",
     "url": "https://onos-ejoor.vercel.app"
   },
-  "main": "cmd/index.js",
+  "main": "dist/cmd/index.js",
   "bin": {
-    "fauth-temp": "dist/cmd/index.js"
+    "fauth-template": "dist/cmd/index.js"
   },
   "files": [
     "dist/**/*",
@@ -19,8 +19,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node cmd/index.ts create",
-    "fauth-temp": "ts-node cmd/index.ts create",
-    "publish": "npm run build && npm publish"
+    "fauth-template": "ts-node cmd/index.ts"
   },
   "dependencies": {
     "@clack/prompts": "^0.11.0",
