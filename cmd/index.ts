@@ -58,7 +58,7 @@ function copyDefault(targetDir: string, folders: string[]) {
 }
 
 program
-  .name("fs-auth")
+  .name("fauth-temp")
   .version("1.0.0")
   .description("Generate auth templates for your projects");
 

@@ -1,5 +1,5 @@
 {
-  "name": "fs-auth",
+  "name": "fauth-temp",
   "version": "1.0.0",
   "description": "Generate auth templates for your projects",
   "author": {
@@ -9,12 +9,12 @@
   },
   "main": "cmd/index.js",
   "bin": {
-    "fs-auth": "dist/cmd/index.js"
+    "fauth-temp": "dist/cmd/index.js"
   },
   "scripts": {
     "build": "tsc",
     "dev": "ts-node cmd/index.ts create",
-    "create-auth-template": "ts-node cmd/index.ts create"
+    "fauth-temp": "ts-node cmd/index.ts create"
   },
   "dependencies": {
     "@clack/prompts": "^0.11.0",
