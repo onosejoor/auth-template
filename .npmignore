@@ -2,4 +2,8 @@ node_modules
 client/
 go_server/
 node_server/
+cmd/
+templates/
 !dist/templates/
+!dist/cmd/
+
