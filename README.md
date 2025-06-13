@@ -1,192 +1,106 @@
-# 🔑 Auth Template - Secure Your Next Project! 🚀
+# 🚀 Auth Template Generator 🛠️
 
-A modern authentication template built with Next.js and Go, designed to streamline user authentication with a sleek UI and robust backend. 🛡️
+Generate authentication templates for your projects with ease! This tool helps you scaffold a complete authentication system with both client and server-side components. 
 
 ## ✨ Features
 
-- 🔒 **Secure Authentication**: Utilizes JWT for secure session management.
-- 📧 **Email/Password Sign-up and Sign-in**: Standard authentication methods for ease of use.
-- 👤 **Profile Page**: Displays user information and account details.
-- 🛡️ **Middleware Protection**: Protects specific routes, redirecting unauthenticated users.
-- 🎨 **Modern UI**: Built with Radix UI and Tailwind CSS for a polished user experience.
+- 🌐 **Multi-Server**: Supports Go (Fiber) and Node (Express) servers.
+- 🛡️ **Secure Authentication**: Implements JWT-based authentication.
+- 🎨 **Modern UI**: Comes with a pre-built client UI using Next.js and Shadcn UI.
+- 🔐 **Middleware**: Includes middleware for route protection and schema validation.
+- ⚙️ **Customizable**: Easily customizable templates to fit your specific needs.
 
-## 🛠️ Technologies Used
+## 📦 Installation
 
-| Technology    | Description                                              |
-| :------------ | :------------------------------------------------------- |
-| Next.js       | Frontend framework for building user interfaces.         |
-| Go            | Backend language for handling API requests and logic.   |
-| Radix UI      | Set of accessible UI primitives.                        |
-| Tailwind CSS  | Utility-first CSS framework for styling.               |
-| Fiber         | Lightweight web framework for Go.                      |
-| MongoDB       | Database for storing user data.                          |
-| JWT           | JSON Web Tokens for authentication.                    |
+Follow these steps to get the project up and running locally:
 
-## 🚀 Getting Started
+1.  **Clone the repository:**
+   ```bash
+   git clone https://github.com/onosejoor/auth-template.git
+   cd auth-template
+   ```
 
-Follow these steps to get the project up and running on your local machine.
+2.  **Install the dependencies:**
+   ```bash
+   npm install
+   ```
 
-### 📦 Installation
+3.  **Build the project:**
+   ```bash
+   npm run build
+   ```
 
-1.  **Clone the Repository**:
-    ```bash
-    git clone <repository-url>
-    cd auth-template
-    ```
+4.  **Run the CLI tool:**
+   ```bash
+   npm run dev
+   ```
 
-2.  **Navigate to the client directory:**
-    ```bash
-    cd client
-    ```
+## 🚀 Usage
 
-3.  **Install client dependencies:**
-    ```bash
-    npm install
-    ```
+### Creating a New Authentication Template
+Run the create command to generate a new authentication template:
 
-4.  **Start the client development server:**
-    ```bash
-    npm run dev
-    ```
-
-5.  **Navigate to the server directory:**
-    ```bash
-    cd ../server
-    ```
-
-6.  **Install server dependencies:**
-    ```bash
-    go mod tidy
-    ```
-
-7.  **Start the server:**
-    ```bash
-    go run main.go
-    ```
-
-### ⚙️ Environment Variables
-
-Create a `.env` file in the `server` directory and add the following variables:
-
-- `MONGODB_URI`: Your MongoDB connection string. Example: `mongodb://localhost:27017/auth_db`
-- `JWT_SECRET`: A secret key for signing JWT tokens. Example: `supersecretkey`
-- `ENVIRONMENT`: Set to `production` for secure cookies in production. Example: `development`
-
-## 💻 Usage
-
-### Sign Up
-
-1.  Navigate to the sign-up page at `http://localhost:3000/signup`.
-2.  Enter your email, username, and password.
-3.  Agree to the terms of service and privacy policy.
-4.  Click "Create Account".
-
-### Sign In
-
-1.  Navigate to the sign-in page at `http://localhost:3000/signin`.
-2.  Enter your email and password.
-3.  Click "Sign In".
-
-### Profile Page
-   Once logged in, visit `http://localhost:3000/profile` to see your user profile. This page displays your username, email, and member since date.
-
-### API Documentation
-
-#### Auth API
-
-##### Base URL
-
-`http://localhost:8080/auth`
-
-##### POST /auth/signup
-
-**Request**:
-
-```json
-{
-  "username": "testuser",
-  "email": "test@example.com",
-  "password": "password123"
-}
+```bash
+create-auth-template create
 ```
 
-**Response**:
+### Configuration Options
+- **Include Client**: Choose whether to include the client folder in the generated template.
+- **Server Selection**: Select the server type (Go + Fiber, Node + Express, or both).
 
-```json
-{
-  "success": true,
-  "message": "User created successfully"
-}
+### Example:
+```bash
+create-auth-template create
 ```
+1.  "do you want to include client folder?" - Type `y` for yes, or `n` for no.
+2.  "Pick server folder." - Select your desired server type.
 
-**Errors**:
+<details>
+<summary>Detailed Instructions</summary>
+After running the create command, the CLI will prompt you with a series of questions:
 
-- 400: Invalid request body.
-- 409: User already exists.
-- 500: Internal error.
+1.  **Include Client Folder?**
+   - Type `y` to include the client folder in the generated template.
+   - Type `n` to exclude the client folder.
+2.  **Pick Server Folder**
+   - Select your desired server type. Options include:
+     - `GO + Fiber`
+     - `Node + Express`
+     - `Both`
 
-##### POST /auth/signin
+The CLI tool will then generate the authentication template in the auth-template directory.
+</details>
 
-**Request**:
+## ⚙️ Technologies Used
 
-```json
-{
-  "email": "test@example.com",
-  "password": "password123"
-}
-```
-
-**Response**:
-
-```json
-{
-  "success": true,
-  "message": "Welcome testuser"
-}
-```
-
-**Errors**:
-
-- 400: Incorrect Password.
-- 404: User not found.
-- 500: Internal error.
-
-##### GET /auth/user/:id
-
-**Response**:
-
-```json
-{
-  "success": true,
-  "user": {
-    "_id": "66694ca54e21e9116e441076",
-    "email": "test@example.com",
-    "username": "testuser",
-    "created_at": "2024-06-12T15:18:45.926Z"
-  }
-}
-```
-
-**Errors**:
-
-- 404: User does not exist.
-- 500: Error getting user data.
+| Technology    | Description                                       | Link                                  |
+| :------------ | :------------------------------------------------ | :------------------------------------ |
+| TypeScript    | Primary language for the CLI tool and client     | [TypeScript](https://www.typescriptlang.org/) |
+| Node.js       | Server-side runtime                               | [Node.js](https://nodejs.org/)       |
+| Next.js       | React framework for the client UI                 | [Next.js](https://nextjs.org/)       |
+| Shadcn UI     | UI component library                              | [Shadcn UI](https://ui.shadcn.com/) |
+| Go            | Server-side language (if Go server is selected)  | [Go](https://go.dev/)                |
+| Fiber         | Go web framework (if Go server is selected)     | [Fiber](https://gofiber.io/)        |
+| Express       | Node.js web framework (if Node server is selected) | [Express](https://expressjs.com/)   |
+| Mongoose      | MongoDB object modeling tool (Node.js server)     | [Mongoose](https://mongoosejs.com/)  |
+| Commander.js | CLI framework   | [Commander.js](https://www.npmjs.com/package/commander)  |
+| Clack         | Terminal User Interface | [Clack](https://www.npmjs.com/package/clack)  |
 
 ## 🤝 Contributing
 
-Contributions are always welcome! Here's how you can contribute:
+Contributions are welcome! Here are some guidelines:
 
--   🐛 **Report Bugs**: Submit detailed bug reports to help improve the project.
--   💡 **Suggest Features**: Propose new features to enhance the template.
--   🧑‍💻 **Submit Pull Requests**: Contribute code changes and improvements.
+- 🐛 **Report Issues**: If you find a bug, please open an issue.
+- 🛠️ **Submit Pull Requests**: Propose changes by submitting a pull request.
+- 📝 **Follow Coding Standards**: Ensure your code adheres to the project’s coding standards.
 
-## 📜 License
+## 📄 License
 
-This project is licensed under the [MIT License](link-to-license).
+This project is under the [MIT License](link-to-license).
 
-## 🧑‍Author
+## 🧑‍💻 Author Information
 
-- **Author**: Onos Ejoor
+- **Author**: Onos
   - GitHub: [Author's GitHub](https://github.com/onosejoore)
   - Twitter: [Author's Twitter](https://twitter.com/DevText16)
 
