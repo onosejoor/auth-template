@@ -1,10 +1,15 @@
 {
-  "name": "auth-temp",
-  "version": "1.0.6",
+  "name": "fs-auth",
+  "version": "1.0.0",
   "description": "Generate auth templates for your projects",
+  "author": {
+    "name": "Onos Ejoor",
+    "email": "onosejoor14@gmail.com",
+    "url": "https://onos-ejoor.vercel.app"
+  },
   "main": "cmd/index.js",
   "bin": {
-    "auth-template": "dist/cmd/index.js"
+    "fs-auth": "dist/cmd/index.js"
   },
   "scripts": {
     "build": "tsc",
