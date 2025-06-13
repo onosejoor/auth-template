@@ -1,6 +1,6 @@
 {
   "name": "fauth-template",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Generate auth templates for your projects",
   "author": {
     "name": "Onos Ejoor",
@@ -13,8 +13,8 @@
   },
   "files": [
     "dist/**/*",
-    "templates/**/*",
-    "cmd/**/*"
+    "cmd/**/*",
+    "README.md"
   ],
   "scripts": {
     "build": "tsc",
