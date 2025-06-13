@@ -1,6 +1,6 @@
 {
   "name": "fauth-template",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Generate auth templates for your projects",
   "author": {
     "name": "Onos Ejoor",
@@ -15,6 +15,13 @@
     "dist/**/*",
     "cmd/**/*",
     "README.md"
+  ],
+  "keywords": [
+    "authentication template",
+    "GO",
+    "Fiber",
+    "auth",
+    "template"
   ],
   "scripts": {
     "build": "tsc",
