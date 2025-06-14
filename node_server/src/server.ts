@@ -9,6 +9,7 @@ import validateSchema from "./middlewares/validateShema";
 import { loginShema, registerSchema } from "./configs/shema.config";
 import { signinController } from "./controllers/signin.controller";
 import { oauthController } from "./controllers/oauth.controller";
+import { getUserController } from "./controllers/get_user.controller";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.get("/", function (_, res) {
   res.json("Connected");
 });
 
+app.get("/auth/user/:id", getUserController);
 app.post("/auth/signup", validateSchema(registerSchema), signupController);
 app.post("/auth/signin", validateSchema(loginShema), signinController);
 app.post("/auth/oauth", oauthController);

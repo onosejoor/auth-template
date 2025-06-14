@@ -28,8 +28,9 @@ func main() {
 	auth.Get("/user/:id", handlers.HandleGetUser)
 	auth.Post("/signup", handlers.HandleSignup)
 	auth.Post("/signin", handlers.HandleSignin)
+	auth.Post("/oauth", handlers.HandleOauth)
 
 	db.GetClient()
-	log.Println("Server listening on port 3000")
+	log.Println("Server listening on port 8080")
 	app.Listen(":8080")
 }
