@@ -7,7 +7,6 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -17,14 +16,9 @@ func HandleGetUser(ctx *fiber.Ctx) error {
 
 	var user models.User
 
-	objectId, err := primitive.ObjectIDFromHex(userId)
-	if err != nil {
-		return ctx.Status(404).JSON(fiber.Map{
-			"success": false, "message": "Invalid Id",
-		})
-	}
+	authUser := ctx.Locals("user").(*models.UserRes)
 
-	err = client.Collection("users").FindOne(ctx.Context(), bson.M{"_id": objectId}).Decode(&user)
+	err := client.Collection("users").FindOne(ctx.Context(), bson.M{"_id": authUser.ID}).Decode(&user)
 	if err != nil {
 		if err.Error() == mongo.ErrNoDocuments.Error() {
 			return ctx.Status(404).JSON(fiber.Map{

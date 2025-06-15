@@ -4,6 +4,7 @@ import (
 	"log"
 	"main/db"
 	"main/handlers"
+	"main/middlewares"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -24,11 +25,14 @@ func main() {
 	}))
 
 	auth := app.Group("/auth")
-
-	auth.Get("/user/:id", handlers.HandleGetUser)
 	auth.Post("/signup", handlers.HandleSignup)
 	auth.Post("/signin", handlers.HandleSignin)
 	auth.Post("/oauth", handlers.HandleOauth)
+
+	userRoute := auth.Group("/user")
+
+	userRoute.Use(middlewares.AuthMiddleware)
+	userRoute.Get("", handlers.HandleGetUser)
 
 	db.GetClient()
 	log.Println("Server listening on port 8080")
