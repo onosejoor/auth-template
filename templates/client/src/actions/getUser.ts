@@ -1,14 +1,13 @@
 "use server";
 
-import { getSession } from "@/lib/session/session";
 import { SERVER_URl } from "@/lib/utils";
 import axios from "axios";
 
 export async function getUser() {
-  const { id } = await getSession();
-
   try {
-    const { data } = await axios.get<UserRes>(`${SERVER_URl}/auth/user/${id}`);
+    const { data } = await axios.get<UserRes>(`${SERVER_URl}/auth/user`, {
+      withCredentials: true,
+    });
 
     return { ...data };
   } catch (error) {

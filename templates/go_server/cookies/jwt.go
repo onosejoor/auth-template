@@ -2,7 +2,6 @@ package cookies
 
 import (
 	"fmt"
-	"log"
 	"main/models"
 	"os"
 	"time"
@@ -10,28 +9,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"
 )
-
-func SetJwt(payload models.UserRes, exp time.Time) (token string, err error) {
-
-	var secretKey = []byte(os.Getenv("JWT_SECRET"))
-
-	if len(secretKey) < 1 {
-		log.Panicln("JWT SECRET CANT BE EMPTY!")
-	}
-
-	claim := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"username": payload.Username,
-		"id":       payload.ID,
-		"exp":      exp.Unix(),
-	})
-
-	jwt, err := claim.SignedString(secretKey)
-	if err != nil {
-		return "", err
-	}
-
-	return jwt, err
-}
 
 func VerifyJwt(session string) (valid bool, err error) {
 	var secretKey = []byte(os.Getenv("JWT_SECRET"))
@@ -60,17 +37,27 @@ func VerifyJwt(session string) (valid bool, err error) {
 func CreateSession(payload models.UserRes, ctx *fiber.Ctx) error {
 	expirationTime := time.Now().Add(7 * 24 * time.Hour)
 
-	jwt, err := SetJwt(payload, expirationTime)
+	tokens, err := GenerateTokens(payload)
 	if err != nil {
 		return err
 	}
 
 	ctx.Cookie(&fiber.Cookie{
 		Secure:   os.Getenv("ENVIRONMENT") == "production",
+		Expires:  time.Now().Add(15 * time.Minute),
+		HTTPOnly: true,
+		Name:     "auth_access_token",
+		Value:    tokens.AccessToken,
+		SameSite: fiber.CookieSameSiteLaxMode,
+		Path:     "/",
+	})
+
+	ctx.Cookie(&fiber.Cookie{
+		Secure:   os.Getenv("ENVIRONMENT") == "production",
 		Expires:  expirationTime,
 		HTTPOnly: true,
-		Name:     "auth_template_session_token",
-		Value:    jwt,
+		Name:     "auth_session_token",
+		Value:    tokens.RefreshToken,
 		SameSite: fiber.CookieSameSiteLaxMode,
 		Path:     "/",
 	})
