@@ -1,133 +1,106 @@
-# 🔥 Auth Template Generator 🔥
+# Auth Template: Streamlining Authentication for Modern Applications 🚀
 
-✨ Generate authentication templates for your projects with ease! ✨
+A comprehensive authentication template designed to kickstart your projects with Go, Fiber, Node, Express, and Next.js.
 
-This CLI tool helps you kickstart your projects by creating pre-configured authentication setups. Choose from Go with Fiber, Node with Express, or both!
+## Overview
 
-## 🛠️ Installation
+This project provides a robust foundation for implementing authentication in your applications. It includes both Go (with Fiber) and Node.js (with Express) server implementations, along with a Next.js client, offering flexibility and choice for your backend needs. Whether you're building a microservice architecture or a full-stack application, this template simplifies the process of setting up secure user authentication.
 
-### Prerequisites
+## Installation
 
-- Node.js (v18 or higher)
-- npm (latest version)
+Follow these steps to set up the project locally:
 
-### Steps
-
-1. **Clone the Repository**:
-
-   ```bash
-   git clone https://github.com/onosejoor/auth-template.git
-   ```
-
-2. **Navigate to the Project Directory**:
-
-   ```bash
-   cd auth-template
-   ```
-
-3. **Install Dependencies**:
-
-   ```bash
-   npm install
-   ```
-
-4. **Build the Project**:
-
-   ```bash
-   npm run build
-   ```
-
-5. **Link the Package Globally**:
-   ```bash
-   npm link
-   ```
-
-## 🚀 Usage
-
-### Creating a New Auth Template
-
-1. **Run the CLI Tool**:
-
-   ```bash
-   fauth-template create
-   ```
-
-2. **Follow the Prompts**:
-   - You'll be asked whether you want to include a client folder and which server folder to include (Go, Node, or both).
-
-### Example
+- **Clone the Repository**:
 
 ```bash
-fauth-template create
+git clone https://github.com/onosejoor/auth-template.git
+cd auth-template
 ```
 
-#### Or install globally
+- **Install dependencies**
 
 ```bash
-npm i -g fauth-template; fauth-template create
+cd go_server && go mod tidy
+cd ../node_server && npm install
+cd ../client && npm install
 ```
 
-<details>
-<summary>Detailed Instructions</summary>
+- **Environment Variables**:
 
-1.  **Open your terminal**.
+Create `.env` files in both the `go_server` and `node_server` directories, populating them with the necessary environment variables (refer to the `.env.example` files). For the client, create `.env.local` with `JWT_SECRET` and `SERVER_URL`.
 
-2.  **Run the command** `fauth-template create`.
+- **Running the Applications**:
 
-3.  **Answer the prompts**:
+```bash
+# In separate terminals:
+cd go_server && go run main.go
+cd node_server && npm run dev
+cd client && npm run dev
+```
 
-    - `Do you want to include a client folder?` - Choose `yes` or `no`.
+## Usage
 
-    - `Pick server folder`:
+1.  **Signup:** Navigate to the signup page to create a new account.
+    ![Signup Form](https://i.imgur.com/YOUR_SIGNUP_FORM_SCREENSHOT.png)
+2.  **Signin:** Use the signin page to log in with your existing credentials.
+    ![Signin Form](https://i.imgur.com/YOUR_SIGNIN_FORM_SCREENSHOT.png)
+3.  **Profile:** Access your profile page after successful authentication.
 
-      - `GO + Fiber`
-      - `Node + Express`
-      - `Both`
+## Features
 
-4.  **The tool will generate an `auth-template` folder** in your current directory with the selected authentication setup.
+- **Dual Backend Support:** Choose between a Go-based (Fiber) or Node.js-based (Express) backend.
+- **Next.js Client:** A modern and responsive user interface built with Next.js.
+- **JWT Authentication:** Secure authentication using JSON Web Tokens.
+- **Middleware:** Authentication middleware to protect routes.
+- **Form Validation:** Utilizes Zod Schemas for robust form validation on the Node.js server.
+- **Cookie-Based Sessions:** Secure session management using cookies.
+- **OAuth Support:** Includes basic OAuth handler.
 
-</details>
+## Technologies Used
 
-## ✨ Features
+| Technology    | Description                                                        | Link                                                           |
+| :------------ | :----------------------------------------------------------------- | :------------------------------------------------------------- |
+| TypeScript    | Primary language for client and Node.js server                    | [TypeScript](https://www.typescriptlang.org/)                 |
+| Go            | Backend server implementation                                      | [Go](https://go.dev/)                                         |
+| Fiber         | Lightweight web framework for Go                                   | [Fiber](https://gofiber.io/)                                  |
+| Node.js       | Backend runtime environment                                        | [Node.js](https://nodejs.org/)                                |
+| Express       | Web application framework for Node.js                              | [Express](https://expressjs.com/)                             |
+| Next.js       | React framework for building performant web applications          | [Next.js](https://nextjs.org/)                               |
+| Mongoose      | MongoDB object modeling tool (Node.js)                             | [Mongoose](https://mongoosejs.com/)                           |
+| MongoDB       | Database                                                           | [MongoDB](https://www.mongodb.com/)                           |
+| Zod           | Schema validation library for TypeScript (Node.js)                 | [Zod](https://github.com/colinhacks/zod)                      |
+| Radix UI      | Set of unstyled, accessible UI primitives                         | [Radix UI](https://www.radix-ui.com/)                          |
+| Tailwind CSS  | Utility-first CSS framework                                        | [Tailwind CSS](https://tailwindcss.com/)                       |
+| Axios         | Promise based HTTP client                                          | [Axios](https://axios-http.com/docs/intro)                     |
+| bcryptjs      | Library for hashing passwords (Node.js)                            | [bcryptjs](https://www.npmjs.com/package/bcryptjs)             |
+| jose          | JavaScript implementation of the JWT specification (Node.js)        | [jose](https://www.npmjs.com/package/jose)                     |
+| lucide-react  | Beautifully simple, pixel-perfect icons for React                   | [lucide-react](https://lucide.dev/)                            |
+| sonner        | Opinionated toast component for React                              | [sonner](https://sonner.emilkowalski.com/)                     |
+| class-variance-authority        | Compose reusable, type-safe class variants in JavaScript + TypeScript | [class-variance-authority](https://cva.style/)             |
+| commander      | Complete solution for node.js command-line interfaces      | [commander](https://www.npmjs.com/package/commander)             |
+| @clack/prompts         | Beautifully designed command-line prompts | [@clack/prompts](https://www.npmjs.com/package/@clack/prompts)           |
+| chalk     | Terminal string styling done right     | [chalk](https://www.npmjs.com/package/chalk)                   |
 
-- ✅ **Go + Fiber**: A complete authentication backend using Go and the Fiber web framework.
-- ⚡ **Node + Express**: A robust authentication backend built with Node.js and Express.
-- 🌐 **Full-Stack**: Option to include a client folder with pre-built UI components for authentication.
-- 🛡️ **Secure**: Implements JWT-based authentication for secure user management.
+## Contributing
 
-## 💻 Technologies Used
+Contributions are welcome! Here's how you can help:
 
-| Technology             | Description                                                                                   |
-| :--------------------- | :-------------------------------------------------------------------------------------------- |
-| TypeScript             | Primary language for the CLI tool and client-side components.                                 |
-| Go                     | Used for the Go + Fiber backend option.                                                       |
-| Node.js                | Used for the Node + Express backend option.                                                   |
-| Fiber                  | A fast and lightweight web framework for Go.                                                  |
-| Express                | A flexible and minimalist web application framework for Node.js.                              |
-| MongoDB                | Database used for storing user data in both Go and Node.js backends.                          |
-| JWT (JSON Web Tokens)  | Used for secure authentication and session management.                                        |
-| Next.js                | Used for the client-side components, providing a modern React framework.                      |
-| Shadcn UI              | Provides reusable UI components for the client-side, ensuring a consistent and modern design. |
-| Commander.js and Clack | Powers the CLI, offering easy command definition and beautiful terminal prompts.              |
+-   Report bugs 🐛.
+-   Suggest new features ✨.
+-   Submit pull requests 🛠️.
 
-## 🤝 Contributing
+## License
 
-We welcome contributions to enhance the auth template generator!
+This project is open source and available under the [MIT License](https://opensource.org/license/mit/).
 
-- 📝 **Fork the repository**.
-- 🌱 **Create a new branch** for your feature or bug fix.
-- 🛠️ **Implement your changes**.
-- ✅ **Test thoroughly**.
-- 🚀 **Submit a pull request** with a clear description of your changes.
+## Changelog
+refer to [ChangeLog](./CHANGELOG.md)
 
-## 📜 License
+## Author Info
 
-This project is licensed under the [MIT License](LICENSE).
-
-## 🧑‍💻 Author Info
-
-- **Onos Ejoor**
-  - Website: [https://onos-ejoor.vercel.app](https://onos-ejoor.vercel.app)
-  - Email: onosejoor14@gmail.com
+- Onos Ejoor
+    - Website: [https://onos-ejoor.vercel.app](https://onos-ejoor.vercel.app)
+    - Twitter: [@DevText16](https://twitter.com/DevText16)
+    - GitHub: [onosejoor](https://github.com/onosejoor)
 
 [![Readme was generated by Dokugen](https://img.shields.io/badge/Readme%20was%20generated%20by-Dokugen-brightgreen)](https://www.npmjs.com/package/dokugen)
