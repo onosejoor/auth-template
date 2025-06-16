@@ -1,11 +1,12 @@
+import { AuthRequest } from "@/middlewares/requireAuth";
 import User from "@/models/user.model";
-import { Request, Response } from "express";
+import {  Response } from "express";
 import { Types } from "mongoose";
 
-export async function getUserController(req: Request, res: Response) {
-  const userId = req.params.id;
+export async function getUserController(req: AuthRequest, res: Response) {
+  const user = req.user;
 
-  const findUser = await User.findById(new Types.ObjectId(userId))
+  const findUser = await User.findById(new Types.ObjectId(user?.id))
     .select(["username", "email", "_id"])
     .lean();
   if (!findUser) {

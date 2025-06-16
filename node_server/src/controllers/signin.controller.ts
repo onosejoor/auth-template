@@ -35,8 +35,8 @@ export async function signinController(req: Request, res: Response) {
   };
   await createSession({ res, payload });
 
-  res.status(201).json({
+  res.status(200).json({
     success: true,
-    message: "User created successfully",
+    message: `Welcone ${username}`,
   });
 }
