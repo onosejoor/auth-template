@@ -1,3 +1,10 @@
+#### 1.1.4 (2025-06-16)
+
+##### New Features
+
+*  add access and refresh token, add middleware for protected route ([7eee6a59](https://github.com/onosejoor/auth-template/commit/7eee6a594233290297ce3fe8259f3dc185d59dd2))
+*  add access and refresh token, add middleware for protected route ([355c77ed](https://github.com/onosejoor/auth-template/commit/355c77ed90b465f901868800aa8933127da44c56))
+
 #### 1.1.2 (2025-06-16)
 
 ##### New Features
