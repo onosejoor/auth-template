@@ -2,6 +2,8 @@ package main
 
 import (
 	"log"
+
+	oauth_config "main/configs/oauth"
 	"main/db"
 	"main/handlers"
 	"main/middlewares"
@@ -24,14 +26,14 @@ func main() {
 		AllowCredentials: true,
 	}))
 
+	oauth := oauth_config.InitializeOauthConfig()
+
 	auth := app.Group("/auth")
 	auth.Post("/signup", handlers.HandleSignup)
 	auth.Post("/signin", handlers.HandleSignin)
-	auth.Post("/oauth", handlers.HandleOauth)
+	auth.Post("/oauth", oauth.GetOauthController)
 
-	userRoute := auth.Group("/user")
-
-	userRoute.Use(middlewares.AuthMiddleware)
+	userRoute := auth.Group("/user").Use(middlewares.AuthMiddleware)
 	userRoute.Get("", handlers.HandleGetUser)
 
 	db.GetClient()
